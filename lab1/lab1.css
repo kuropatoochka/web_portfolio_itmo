@@ -1,11 +1,3 @@
-.student-card__title, .converter-card__title {
-  color: var(--text-color);
-}
-
-.student-card__subtitle {
-  color: var(--muted-color);
-}
-
 .converter-card input[type="text"],
 .converter-card input[type="number"] {
   padding: 8px 12px;
