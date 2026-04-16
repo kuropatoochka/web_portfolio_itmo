@@ -1,0 +1,51 @@
+.student-card__title, .converter-card__title {
+  color: var(--text-color);
+}
+
+.student-card__subtitle {
+  color: var(--muted-color);
+}
+
+.converter-card input[type="text"],
+.converter-card input[type="number"] {
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.converter-card button {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.converter-card button:hover {
+  background-color: var(--accent-hover);
+}
+
+#cny {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.nav-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-color);
+}
+
+.nav-link, .nav-back__icon {
+  color: inherit;
+}
+
+.nav-back:hover{
+  color: var(--accent-hover);
+}

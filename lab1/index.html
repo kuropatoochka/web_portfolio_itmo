@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lab 01 — Конвертер валют</title>
+  <link rel="stylesheet" href="lab1.css">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    function convertData() {
+      const lastname = document.getElementById("lastname").value.trim();
+      const rublesStr = document.getElementById("rubles").value;
+      const rubles = Number(rublesStr);
+      const cnyResult = document.getElementById("cny");
+
+      if (!lastname || rubles === "") {
+        alert("Пожалуйста, заполните все поля");
+        return;
+      }
+
+      fetch("https://www.cbr-xml-daily.ru/daily_json.js")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("CBR request failed");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const rate = data?.Valute?.CNY?.Value;
+          const cny = (rubles / rate).toFixed(2);
+          cnyResult.textContent = "Сумма в юанях: " + cny;
+
+          const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_sJpZ-t2y-Mt_HsDADgh4-et7OGLGFqZNXseLRQlGwciWoQ/formResponse";
+          const formData = new FormData();
+          formData.append("entry.138719531", lastname);
+          formData.append("entry.1949578643", cny);
+
+          return fetch(formURL, {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+          });
+        })
+        .then(() => {
+          alert("Данные отправлены в таблицу!");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  </script>
+</head>
+<body>
+  <main class="page__content">
+    <section class="card">
+      <div class="student__header">
+        <h1 class="student__title">Петрова Валентина Павловна</h1>
+        <p class="student__subtitle">ИСУ: 336908</p>
+      </div>
+      <ul class="student__meta-list">
+        <li class="student__meta-item">
+          GitHub:
+          <a class="link student__link" href="https://github.com/kuropatoochka" target="_blank" rel="noopener noreferrer">
+            kuropatoochka
+          </a>
+        </li>
+        <li class="student__meta-item">
+          <span class="labs__badge">Lab 01</span>
+        </li>
+      </ul>
+    </section>
+    <section class="card converter-card">
+      <h2 class="student-card__title">Конвертер валют</h2>
+      <input type="text" id="lastname" placeholder="Введите фамилию">
+      <input type="number" id="rubles" placeholder="Введите сумму в рублях">
+      <button onclick="convertData()">Конвертировать и отправить</button>
+      <div id="cny"></div>
+    </section>
+    <nav class="nav-back">
+      <svg class="nav-back__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M14.75 8a.75.75 0 0 1-.75.75H3.81l2.72 2.72a.75.75 0 1 1-1.06 1.06l-4-4a.75.75 0 0 1 0-1.06l4-4a.75.75 0 0 1 1.06 1.06L3.81 7.25H14a.75.75 0 0 1 .75.75" clip-rule="evenodd"/></svg>
+      <a class="nav-link" href="../index.html">На главную</a>
+    </nav>
+  </main>
+</body>
+</html>
