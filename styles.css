@@ -24,15 +24,15 @@
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-}
-
-.page {
-  min-height: 100vh;
 }
 
 .page__content {
@@ -57,7 +57,6 @@ body {
 .link {
   color: var(--accent-color);
   font-weight: 600;
-  text-decoration: none;
 }
 
 .link:hover {
