@@ -63,13 +63,28 @@ body {
   color: var(--accent-hover);
 }
 
-.student__header {
+.nav-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-color);
+}
+
+.nav-link, .nav-back__icon {
+  color: inherit;
+}
+
+.nav-back:hover{
+  color: var(--accent-hover);
+}
+
+.card-header {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.student__subtitle {
+.card-subtitle {
   color: var(--muted-color);
 }
 
