@@ -100,7 +100,8 @@ body {
   font-weight: 600;
 }
 
-.labs__list {
+.labs__list,
+.reports__list {
   padding: 0;
   list-style: none;
   display: grid;
@@ -108,7 +109,8 @@ body {
   gap: 16px;
 }
 
-.labs__item {
+.labs__item,
+.reports__item {
   display: flex;
   gap: 12px;
   padding: 20px;
@@ -138,7 +140,8 @@ body {
   text-transform: uppercase;
 }
 
-.labs__item-description {
+.labs__item-description,
+.reports__item-description {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -146,6 +149,24 @@ body {
 
 .labs__description {
   color: var(--muted-color);
+}
+
+.button {
+  width: fit-content;
+  margin-top: 4px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 640px) {
@@ -170,7 +191,8 @@ body {
     gap: 12px;
   }
 
-  .labs__list {
+  .labs__list,
+  .reports__list {
     grid-template-columns: 1fr;
   }
 }
